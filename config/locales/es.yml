@@ -1,0 +1,8 @@
+es:
+  activerecord:
+    errors:
+      models:
+        operation_type:
+          attributes:
+            title:
+              blank: El titulo no puede estar vacio

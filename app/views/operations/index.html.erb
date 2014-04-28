@@ -1,0 +1,48 @@
+<h1>Listing operations</h1>
+
+
+<%#=@req %>
+
+<%#=@request %>
+<table>
+  <thead>
+    <tr>
+      <th>Operation type</th>
+      <th>Store</th>
+      <th>Title</th>
+      <th>Account</th>
+      <th>Amount</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @operations.each do |operation| %>
+      <tr>
+        <td><%= operation.operation_type_id %></td>
+        <td><%= operation.store_id %></td>
+        <td><%= operation.title %></td>
+        <td><%= operation.account_id %></td>
+        <td><%= operation.amount %></td>
+        <td><%= link_to 'Show', operation %></td>
+        <td><%= link_to 'Edit', edit_operation_path(operation) %></td>
+        <td><%= link_to 'Destroy', operation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<% if @prev_offset >= 0 %>
+  <%= link_to 'Previous', operations_path(:offset => @prev_offset) %>
+<% end %>
+<% if @count > @next_offset %>
+  <%= link_to 'Next', operations_path(:offset => @next_offset) %>
+<% end %>
+<br>
+<br>
+
+<%= link_to 'New Operation', new_operation_path %>
